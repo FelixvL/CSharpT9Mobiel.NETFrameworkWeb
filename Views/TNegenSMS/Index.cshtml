@@ -1,0 +1,48 @@
+﻿@model  Les1SMSWebForm.NETFrameworkCSharp.Controllers.DisplayObject
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2> @Model.DisplayText </h2>
+<style>
+    td {
+        padding:20px;
+    }
+    a {
+        padding: 20px;
+    }
+
+
+</style>
+<table border="1">
+    <tr>
+        <td></td>
+        <td> @Html.ActionLink("abc", "klikKnop", new { textWaarde = "abc2ABC" })</td>
+        <td> @Html.ActionLink("def", "klikKnop", new { textWaarde = "def3DEF" })</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> @Html.ActionLink("ghi", "klikKnop", new { textWaarde = "ghi4GHI" })</td>
+        <td> @Html.ActionLink("jkl", "klikKnop", new { textWaarde = "jkl5JKL" })</td>
+        <td> @Html.ActionLink("mno", "klikKnop", new { textWaarde = "mno6MNO" })</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> @Html.ActionLink("pqrs", "klikKnop", new { textWaarde = "pqrs7PQRS" })</td>
+        <td> @Html.ActionLink("tuv", "klikKnop", new { textWaarde = "tuv8TUV" })</td>
+        <td> @Html.ActionLink("wxyz", "klikKnop", new { textWaarde = "wxyz9WXYZ" })</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td> @Html.ActionLink("_.,", "klikKnop", new { textWaarde = " .," })</td>
+        <td> @Html.ActionLink("<", "BackSpace")</td>
+        <td></td>
+    </tr>
+
+
+</table>
+
+<h5> @Model.DebugText</h5>
+
