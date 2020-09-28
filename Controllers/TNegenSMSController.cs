@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace Les1SMSWebForm.NETFrameworkCSharp.Controllers
 {
@@ -12,6 +13,18 @@ namespace Les1SMSWebForm.NETFrameworkCSharp.Controllers
         // GET: TNegenSMS
         public ActionResult Index()
         {
+            return View("Index", t9ViewModel.disPlayObject);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult VoegAdresToe(DisplayObject abc) {
+            t9ViewModel.disPlayObject.DebugText = "Submit is gedaan"+abc.PersoonNaam;
+            string invoertekst = abc.PersoonNaam;
+            string filePath = @"C:\_CStest\meedoen.html";
+            string test = System.IO.File.ReadAllText(filePath);
+//            var x = test.Split("\n");
+            string[] lijnen = System.IO.File.ReadAllLines(filePath);
+            System.IO.File.WriteAllText(filePath, test+"\n"+invoertekst);
             return View("Index", t9ViewModel.disPlayObject);
         }
         public ActionResult KlikKnop(string textWaarde)
@@ -36,6 +49,7 @@ namespace Les1SMSWebForm.NETFrameworkCSharp.Controllers
         public void klikKnop(string textWaarde) {
             TimeSpan verschil = DateTime.Now.Subtract(tijdStipVorigeKlik);
             tijdStipVorigeKlik = DateTime.Now;
+            disPlayObject.DebugText = tijdStipVorigeKlik.ToString();
             if (vorigeKnop.Equals(textWaarde))
             {
                 if (verschil.TotalSeconds < 1.0)
@@ -70,5 +84,7 @@ namespace Les1SMSWebForm.NETFrameworkCSharp.Controllers
     public class DisplayObject {
         public string DisplayText = "";
         public string DebugText = "";
+        public string PersoonNaam { get; set; }
+        public string PersoonTelefoonNummer { get; set; }
     }
 }
